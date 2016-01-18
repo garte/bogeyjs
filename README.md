@@ -1,2 +1,2 @@
-# bogeyjs
-BogeyJS dependency injection framework
+# bogeyJS dependency management
+https://garte.github.io/bogeyjs
