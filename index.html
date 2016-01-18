@@ -30,7 +30,7 @@
 <h2>
 <a id="code-reusability" class="anchor" href="#code-reusability" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code reusability</h2>
 
-<p>We are not talking about sharing code here, we're talking about setting up your . Think of it as presets which construct your models, services, controllers, views - whatever you need to run your application on whatever platform that runs JS, be that for instance node.js or a browser.</p>
+<p>We are not talking about sharing code here, we're talking about setting up the parts that make up your application regardless of what framework you want to use. Think of it as presets which construct your models, services, controllers, views - whatever you need to run your application on whatever platform that runs JS, be that for instance node.js or a browser.</p>
 
 <h2>
 <a id="code-modularity" class="anchor" href="#code-modularity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code modularity</h2>
@@ -48,12 +48,54 @@
 <h3>
 <a id="easy-setup" class="anchor" href="#easy-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Easy setup</h3>
 
-<p>Just require the bogey components as shown in the documentation and you can use your code base in every context you wish. This thing will work in React, Angular, Ember... you name it. After setup it's just a single object waiting for you to pull your dependencies from.</p>
+<p>Just require the bogey components and you can use your code base in every context you wish. This thing will work in React, Angular, Ember... you name it. After setup it's just a single object waiting for you to pull your dependencies from.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Initialize resources... These may be extended as you see fit.</span>
+<span class="pl-k">var</span> loader <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Loader</span>();
+<span class="pl-k">var</span> container <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Container</span>(loader);
+<span class="pl-k">var</span> router <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Router</span>({
+    basePath<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/app<span class="pl-pds">'</span></span>
+});
+
+<span class="pl-k">var</span> config <span class="pl-k">=</span> {};
+
+<span class="pl-c">// Initialize the application object</span>
+<span class="pl-k">var</span> app <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Application</span>(config, container, router);
+
+<span class="pl-c">// Load a module definition</span>
+<span class="pl-k">var</span> Main <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./module/Basics<span class="pl-pds">'</span></span>);
+
+<span class="pl-c">// This will be called on bogey.start after the object has been initialized.</span>
+<span class="pl-c">// This could very well be part of a custom Application object if you'd want to be so bold.</span>
+<span class="pl-c1">app</span>.<span class="pl-en">start</span> <span class="pl-k">=</span> <span class="pl-k">function</span> () {
+  <span class="pl-c">// Setup routes and stuff.</span>
+};
+
+<span class="pl-c">// Register the dependencies you want to use for your application. This can be</span>
+<span class="pl-c">// as granular as you need it to be.</span>
+<span class="pl-smi">app</span>.<span class="pl-en">registerModules</span>([Main]);
+
+<span class="pl-c">// Start the app</span>
+<span class="pl-smi">bogey</span>.<span class="pl-c1">start</span>(app).<span class="pl-en">then</span>(<span class="pl-k">function</span> (<span class="pl-smi">app</span>) {
+  <span class="pl-c">// After the application has been initialized we get the actual application object which</span>
+  <span class="pl-c">// basically is a dependency container.</span>
+    <span class="pl-smi">app</span>.<span class="pl-en">get</span>(<span class="pl-s"><span class="pl-pds">'</span>basics.helloworld<span class="pl-pds">'</span></span>).<span class="pl-en">then</span>((<span class="pl-smi">helloworld</span>) <span class="pl-k">=&gt;</span> {
+        <span class="pl-c">// This signals the router to start listening for route events. This should only</span>
+        <span class="pl-c">// be invoked AFTER you're absolutely ready for action.</span>
+        <span class="pl-smi">app</span>.<span class="pl-smi">router</span>.<span class="pl-c1">start</span>();
+    });
+}).<span class="pl-en">done</span>();
+</pre></div>
 
 <h3>
 <a id="lean-structure" class="anchor" href="#lean-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lean structure</h3>
 
-<p>This thing is quite basic and should work reliably for most of its use cases. There's not much to it in terms of </p>
+<p>This thing is quite basic and should work reliably for most of its use cases.</p>
+
+<h3>
+<a id="whats-with-the-name" class="anchor" href="#whats-with-the-name" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's with the name?</h3>
+
+<p>Don't ask.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/garte/bogeyjs">bogeyJS</a> is maintained by <a href="https://github.com/garte">garte</a>.</span>
