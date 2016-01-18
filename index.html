@@ -35,15 +35,15 @@
 <h2>
 <a id="code-modularity" class="anchor" href="#code-modularity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code modularity</h2>
 
-<p>It is possible to publish these modules for others to use in their projects. As long as you register the module within your application object you're good to go:
-    // Load a module definition
-    var Main = require('./module/Basics');</p>
+<p>It is possible to publish these modules for others to use in their projects. As long as you register the module within your application object you're good to go:</p>
 
-<pre><code>// Register the dependencies you want to use for your application. This can be
-// as granular as you need it to be. The definitions from the Main module will now
-// be available as resources by getting them via app.get(...)
-app.registerModules([Main]);
-</code></pre>
+<div class="highlight highlight-source-js"><pre>    <span class="pl-c">// Load a module definition</span>
+    <span class="pl-k">var</span> Main <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./module/Basics<span class="pl-pds">'</span></span>);
+
+    <span class="pl-c">// Register the dependencies you want to use for your application. This can be</span>
+    <span class="pl-c">// as granular as you need it to be. The definitions from the Main module will now</span>
+    <span class="pl-c">// be available as resources by getting them via app.get(...)</span>
+    <span class="pl-smi">app</span>.<span class="pl-en">registerModules</span>([Main]);</pre></div>
 
 <h3>
 <a id="easy-setup" class="anchor" href="#easy-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Easy setup</h3>
