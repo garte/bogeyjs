@@ -19,12 +19,30 @@
     </section>
 
     <section class="main-content">
-      <h3>
-<a id="whats-the-deal" class="anchor" href="#whats-the-deal" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's the deal?</h3>
+      <h1>
+<a id="whats-all-this-then" class="anchor" href="#whats-all-this-then" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's all this, then?</h1>
+
+<h2>
+<a id="code-organization" class="anchor" href="#code-organization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code organization</h2>
 
 <p>Organize your code by creating definitions of how to setup your different components that make up your application. These setup definitions are organized by defining modules which can be reused by different applications in different contexts.</p>
 
-<p>Theoretically it is possible to publish these modules for others to use in their projects. We are not talking about sharing code here, we're talking about setting up your code base within a certain context. Think of it as presets which construct your models, services, controllers, views - whatever you need to run your application on whatever platform that runs JS, be that for instance node.js or a browser.</p>
+<h2>
+<a id="code-reusability" class="anchor" href="#code-reusability" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code reusability</h2>
+
+<p>We are not talking about sharing code here, we're talking about setting up your . Think of it as presets which construct your models, services, controllers, views - whatever you need to run your application on whatever platform that runs JS, be that for instance node.js or a browser.</p>
+
+<h2>
+<a id="code-modularity" class="anchor" href="#code-modularity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code modularity</h2>
+
+<p>It is possible to publish these modules for others to use in their projects. As long as you register the module within your application object you're good to go:
+`// Load a module definition
+var Main = require('./module/Basics');</p>
+
+<p>// Register the dependencies you want to use for your application. This can be
+// as granular as you need it to be.
+app.registerModules([Main]);
+`</p>
 
 <h3>
 <a id="easy-setup" class="anchor" href="#easy-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Easy setup</h3>
