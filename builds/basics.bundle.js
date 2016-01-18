@@ -1,1 +1,0 @@
-console.error("Error: Cannot find module 'bogey' from '/Users/dev/www/bogeyjs/src/basics'");
