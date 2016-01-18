@@ -36,13 +36,14 @@
 <a id="code-modularity" class="anchor" href="#code-modularity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code modularity</h2>
 
 <p>It is possible to publish these modules for others to use in their projects. As long as you register the module within your application object you're good to go:
-`// Load a module definition
-var Main = require('./module/Basics');</p>
+    // Load a module definition
+    var Main = require('./module/Basics');</p>
 
-<p>// Register the dependencies you want to use for your application. This can be
-// as granular as you need it to be.
+<pre><code>// Register the dependencies you want to use for your application. This can be
+// as granular as you need it to be. The definitions from the Main module will now
+// be available as resources by getting them via app.get(...)
 app.registerModules([Main]);
-`</p>
+</code></pre>
 
 <h3>
 <a id="easy-setup" class="anchor" href="#easy-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Easy setup</h3>
