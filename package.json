@@ -1,0 +1,45 @@
+{
+  "name": "bogeyJS",
+  "version": "1.0.0",
+  "description": "A dependency injection framework.",
+  "main": "src/bogey/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "browserify client.js | uglifyjs -m > ../web/js/client.bundle.js",
+    "watch:basics": "watchify src/basics/basics.js -vd -o builds/basics.bundle.js",
+    "build": "npm run build:js && npm run build:css"
+  },
+  "author": "garte",
+  "license": "MIT",
+  "dependencies": {
+    "ampersand-class-extend": "latest",
+    "ampersand-events": "latest",
+    "ampersand-router": "latest",
+    "ampersand-state": "latest",
+    "dom-css": "latest",
+    "domquery": "latest",
+    "dotty": "latest",
+    "intl": "^1.0.1",
+    "lodash": "latest",
+    "q": "latest",
+    "qajax": "latest",
+    "react": "latest",
+    "underscore.string": "latest"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "stage": 1
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "uglify-js": "latest",
+    "watchify": "latest",
+    "reactify": "latest",
+    "babelify": "~6"
+  }
+}
